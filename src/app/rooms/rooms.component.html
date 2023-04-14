@@ -1,0 +1,14 @@
+<lt-header></lt-header>
+<h1>welcome!{{hotelName}}</h1>
+<p>rooms works!</p>
+<div [ngStyle]="{'color':rooms.availableRooms > 0 ? 'green' : 'red'}"
+    [innerText]="numberOfRooms"></div>
+<!-- {{rooms.availableRooms ?? "No rooms"}} -->
+<button [hidden]="hideRooms" (click)="toggle()">toggle</button>
+<button (click)="addRoom()">add rooms</button>
+<div *ngIf="selectedRoom">
+    {{selectedRoom|json}}
+</div>
+<div *ngIf="rooms.availableRooms > 0">
+    <lt-rooms-list [rooms]="roomList" (roomSelected)="selectRoom($event)" [title]="title"> </lt-rooms-list>
+</div>
